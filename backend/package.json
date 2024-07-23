@@ -4,19 +4,19 @@
     "main": "index.mjs",
     "type": "module",
     "scripts": {
-      "start": "node index.mjs",
-      "dev": "nodemon index.mjs",
-      "postinstall": "prisma generate"
+        "start": "node index.mjs",
+        "dev": "nodemon index.mjs",
+        "postinstall": "prisma generate"
     },
     "dependencies": {
-      "express": "^4.17.1",
-      "cors": "^2.8.5",
-      "dotenv": "^10.0.0",
-      "prisma": "^3.0.0",
-      "@prisma/client": "^3.0.0"
+        "@prisma/client": "^3.0.0",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "prisma": "^3.0.0",
+        "yup": "^1.4.0"
     },
     "devDependencies": {
-      "nodemon": "^2.0.7"
+        "nodemon": "^2.0.7"
     }
-  }
-  
+}
