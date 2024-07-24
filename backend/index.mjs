@@ -5,10 +5,10 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import compression from 'compression';
-import morgan from 'morgan'; 
+import morgan from 'morgan';
 import helmet from 'helmet';
 import routes from './src/index.js';
-import rateLimiter from './src/middleware/rateLimiter.js'; 
+import rateLimiter from './src/middleware/rateLimiter.js';
 
 dotenv.config();
 
@@ -34,6 +34,15 @@ app.use(compression());
 app.use(morgan('combined'));
 app.use(helmet());
 app.use(rateLimiter);
+
+// Middleware to disable caching
+app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    res.set('Surrogate-Control', 'no-store');
+    next();
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

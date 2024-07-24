@@ -2,9 +2,9 @@ import { Router } from 'express';
 import { getMessages } from './getmessages.controller.js';
 import apicache from 'apicache';
 
-const cache = apicache.middleware;
+const cache = apicache.options({ enabled: false }).middleware;
 const router = Router();
 
-router.get('/', cache('5 minutes'), getMessages);
+router.get('/', cache('0 seconds'), getMessages);
 
 export default router;

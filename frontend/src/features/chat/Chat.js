@@ -20,8 +20,8 @@ const Chat = () => {
 
   const handleSendMessage = async (content) => {
     try {
-      const newMessage = await postMessage(content);
-      setMessages([newMessage, ...messages]);
+      await postMessage(content);
+      window.location.reload(); // Recarga la página después de enviar un mensaje
     } catch (error) {
       console.error('Error posting message:', error);
     }
