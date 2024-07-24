@@ -4,7 +4,7 @@
     "main": "index.mjs",
     "type": "module",
     "scripts": {
-        "start": "node index.mjs",
+        "start": "node cluster.js",
         "dev": "nodemon index.mjs",
         "deploy": "vercel --prod",
         "postinstall": "prisma generate"
