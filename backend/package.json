@@ -4,25 +4,19 @@
     "main": "index.mjs",
     "type": "module",
     "scripts": {
-        "start": "node cluster.js",
-        "dev": "nodemon index.mjs",
-        "deploy": "vercel --prod",
-        "postinstall": "prisma generate"
+      "start": "node index.mjs",
+      "dev": "nodemon index.mjs",
+      "postinstall": "prisma generate"
     },
     "dependencies": {
-        "@prisma/client": "^3.0.0",
-        "apicache": "^1.6.3",
-        "compression": "^1.7.4",
-        "cors": "^2.8.5",
-        "dotenv": "^10.0.0",
-        "express": "^4.17.1",
-        "express-rate-limit": "^7.4.0",
-        "helmet": "^7.1.0",
-        "morgan": "^1.10.0",
-        "prisma": "^3.0.0",
-        "yup": "^1.4.0"
+      "express": "^4.17.1",
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "prisma": "^3.0.0",
+      "@prisma/client": "^3.0.0"
     },
     "devDependencies": {
-        "nodemon": "^2.0.7"
+      "nodemon": "^2.0.7"
     }
-}
+  }
+  
