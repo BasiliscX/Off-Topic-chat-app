@@ -6,7 +6,8 @@ import { fileURLToPath } from 'url';
 import compression from 'compression';
 import morgan from 'morgan';
 import routes from './src/index.js';
-import errorHandler from './src/middleware/errorHandler.js'; // Importar el middleware de manejo de errores
+import errorHandler from './src/middleware/errorHandler.js';
+import rateLimiter from './src/middleware/rateLimiter.js'; 
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(compression()); 
 app.use(morgan('combined')); 
+app.use(rateLimiter); 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
