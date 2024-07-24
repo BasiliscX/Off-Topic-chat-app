@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import compression from 'compression';
+import morgan from 'morgan'; 
+import helmet from 'helmet';
 import routes from './src/index.js';
 import rateLimiter from './src/middleware/rateLimiter.js'; 
 
@@ -14,6 +16,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(compression()); 
+app.use(morgan('combined'));
+app.use(helmet());
 app.use(rateLimiter); 
 
 const __filename = fileURLToPath(import.meta.url);
