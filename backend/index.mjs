@@ -5,6 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import compression from 'compression';
 import morgan from 'morgan';
+import helmet from 'helmet';
 import routes from './src/index.js';
 import errorHandler from './src/middleware/errorHandler.js';
 import rateLimiter from './src/middleware/rateLimiter.js'; 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(compression()); 
 app.use(morgan('combined')); 
 app.use(rateLimiter); 
+app.use(helmet()); 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
