@@ -15,13 +15,30 @@ const Chat = () => {
         console.error('Error fetching messages:', error);
       }
     }
+
     fetchMessages();
+
+    // Long polling function to continuously check for new messages
+    async function pollForUpdates() {
+      while (true) {
+        try {
+          await fetchMessages();
+          await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds before the next poll
+        } catch (error) {
+          console.error('Error polling updates:', error);
+          break;
+        }
+      }
+    }
+
+    pollForUpdates(); // Start polling for updates
+
   }, []);
 
   const handleSendMessage = async (content) => {
     try {
-      await postMessage(content);
-      window.location.reload(); // Recarga la página después de enviar un mensaje
+      const newMessage = await postMessage(content);
+      setMessages((prevMessages) => [newMessage, ...prevMessages]); // Add the new message to the state
     } catch (error) {
       console.error('Error posting message:', error);
     }
