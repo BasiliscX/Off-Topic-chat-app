@@ -1,3 +1,4 @@
+// src/index.js
 import { Router } from 'express';
 import sendMessageRoutes from './features/sendmessage/sendmessage.routes.js';
 import getMessagesRoutes from './features/getmessages/getmessages.routes.js';

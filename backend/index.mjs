@@ -8,7 +8,6 @@ import compression from 'compression';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import routes from './src/index.js';
-import rateLimiter from './src/middleware/rateLimiter.js';
 
 dotenv.config();
 
@@ -33,7 +32,6 @@ app.use(express.json());
 app.use(compression());
 app.use(morgan('combined'));
 app.use(helmet());
-app.use(rateLimiter);
 
 // Middleware to disable caching
 app.use((req, res, next) => {
