@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 
+/**
+ * Component for the message input form.
+ * @param {function} onSendMessage - Function to call when a message is sent.
+ */
 const MessageForm = ({ onSendMessage }) => {
   const [input, setInput] = useState('');
 
+  /**
+   * Handles the form submission event.
+   * @param {React.FormEvent} event - The form submission event.
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
     if (input.trim()) {

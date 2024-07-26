@@ -5,6 +5,10 @@ import MessageForm from './MessageForm';
 import { getMessages, postMessage } from './chatService';
 import ErrorDisplay from '../errorHandling/ErrorDisplay';
 
+/**
+ * Component representing the main chat interface.
+ * It fetches and displays messages, handles sending new messages, and manages server error state.
+ */
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [serverError, setServerError] = useState(false);
@@ -28,6 +32,10 @@ const Chat = () => {
     return () => clearInterval(interval);
   }, []);
 
+  /**
+   * Handles sending a new message.
+   * @param {string} content - The content of the message to send.
+   */
   const handleSendMessage = async (content) => {
     try {
       await postMessage(content);

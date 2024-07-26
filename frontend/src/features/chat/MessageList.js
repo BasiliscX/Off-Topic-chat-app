@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * Component for displaying a list of messages.
+ * @param {Array} messages - Array of message objects to display.
+ */
 const MessageList = ({ messages }) => {
   return (
     <div className="h-64 overflow-y-scroll mb-4">
