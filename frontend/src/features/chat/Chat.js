@@ -24,7 +24,7 @@ const Chat = () => {
     fetchMessages();
 
     // Re-fetch messages at regular intervals (e.g., every 30 seconds)
-    const interval = setInterval(fetchMessages, 5000);
+    const interval = setInterval(fetchMessages, 2000);
     return () => clearInterval(interval);
   }, []);
 
