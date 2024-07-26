@@ -16,7 +16,7 @@ describe('createMessage', function() {
     createStub.restore();
   });
 
-  it('debería lanzar un error si el contenido está vacío', async () => {
+  it('should throw an error if the content is empty', async () => {
     try {
       await createMessage('');
     } catch (error) {
