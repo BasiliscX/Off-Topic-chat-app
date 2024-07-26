@@ -6,6 +6,7 @@
     "scripts": {
         "start": "node cluster.js",
         "dev": "nodemon index.mjs",
+        "test": "mocha 'tests/**/*.test.js'",
         "deploy": "vercel --prod",
         "postinstall": "prisma generate"
     },
@@ -23,6 +24,9 @@
         "yup": "^1.4.0"
     },
     "devDependencies": {
-        "nodemon": "^2.0.7"
+        "chai": "^5.1.1",
+        "mocha": "^10.7.0",
+        "nodemon": "^2.0.7",
+        "sinon": "^18.0.0"
     }
 }

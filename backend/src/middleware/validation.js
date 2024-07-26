@@ -1,11 +1,17 @@
 import * as Yup from 'yup';
-// import { Request, Response, NextFunction } from 'express';
 
+/**
+ * Middleware to validate the request body against a Yup schema.
+ *
+ * @function validateRequestBody
+ * @param {Object} schema - The Yup validation schema to use.
+ * @returns {Function} - Middleware function for validation.
+ */
 export const validateRequestBody = (schema) => {
   return async (req, res, next) => {
     try {
       await schema.validate(req.body, {
-        abortEarly: true,
+        abortEarly: false,
         stripUnknown: true
       });
       next();
@@ -18,7 +24,9 @@ export const validateRequestBody = (schema) => {
   };
 };
 
-// Ejemplo de esquema de mensaje
+// Define the schema for message validation
 export const messageSchema = Yup.object().shape({
-  content: Yup.string().required('El contenido del mensaje es requerido')
+  content: Yup.string()
+    .required('The content of the message is required')
+    .max(500, 'The content of the message must not exceed 500 characters'),
 });

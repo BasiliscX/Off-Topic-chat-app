@@ -1,14 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
-}
-
-generator client {
-  provider = "prisma-client-js"
 }
 
 model Message {
   id        Int      @id @default(autoincrement())
   content   String
   createdAt DateTime @default(now())
+}
+
+model Tag {
+  id   BigInt @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  name String @db.VarChar(50)
 }

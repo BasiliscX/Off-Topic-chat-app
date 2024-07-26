@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# frontend - Off Topic Chat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Resumen
 
-## Available Scripts
+La carpeta **Frontend** en el proyecto **Off Topic Chat** contiene el código fuente del cliente de la aplicación, desarrollado con React. Esta aplicación permite a los usuarios participar en un chat en tiempo real, enviar mensajes y ver los mensajes de otros usuarios.
 
-In the project directory, you can run:
+## Estructura de la Carpeta
 
-### `npm start`
+La estructura de la carpeta Frontend incluye:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **src/**: Contiene el código fuente de la aplicación.
+  - **features/**: Contiene subcarpetas organizadas por funcionalidades específicas.
+    - **chat/**: Incluye componentes y servicios relacionados con la funcionalidad de chat.
+    - **errorHandling/**: Incluye componentes para la gestión de errores.
+  - **App.js**: Componente raíz de la aplicación.
+  - **index.js**: Punto de entrada principal para la aplicación React.
+  - **index.css**: Archivo de estilos globales para la aplicación.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Principales Componentes
 
-### `npm test`
+### App.js
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Función**: Actúa como el componente principal de la aplicación, encargándose de cargar las distintas características de la misma, incluida la funcionalidad de chat.
+- **Principales Funcionalidades**:
+  - Configuración de la estructura básica de la aplicación.
+  - Uso de React.lazy y Suspense para cargar dinámicamente el componente de chat.
 
-### `npm run build`
+### src/features/chat/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Chat.js**: Componente principal que gestiona la visualización de mensajes y el envío de nuevos mensajes.
+- **chatService.js**: Servicio para interactuar con el backend, proporcionando métodos para obtener y enviar mensajes.
+- **MessageForm.js**: Componente de formulario para enviar mensajes.
+- **MessageList.js**: Componente que muestra la lista de mensajes.
+- **ErrorDisplay.js**: Componente que muestra un mensaje de error cuando el servidor no está disponible.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Tecnologías Utilizadas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **React**: Biblioteca principal para construir la interfaz de usuario.
+- **Axios**: Utilizado para realizar solicitudes HTTP al backend.
+- **Tailwind CSS**: Para el diseño y estilización de la interfaz de usuario.
+- **React Router**: (Opcional) Para la navegación entre diferentes vistas si se implementa en el futuro.
 
-### `npm run eject`
+## Configuración del Entorno
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Variables de Entorno
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **REACT_APP_API_URL**: URL del backend donde se realizan las solicitudes de API.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Instalación y Ejecución
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Para instalar las dependencias y ejecutar la aplicación en modo de desarrollo:
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm install
+npm start

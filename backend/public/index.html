@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
+    <title>Backend del Off Topic Chat</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="%PUBLIC_URL%/icon-backend.png" type="image/png">
 </head>
 <body>
     <div class="container">
-        <h1>¡Hey, te equivocaste de ruta... o qué, ¿sos hacker pá?</h1>
-        <p>Entrá a: <a href="https://futura-direccion-del-chat.com">futura direccion del chat</a></p>
+        <h1>Backend del Off Topic Chat</h1>
+        <p class="description">Rutas del backend. Be gentle, please.</p>
+        <div class="links">
+            <p>Entra al chat principal: <a href="https://off-topic-omega.vercel.app/" target="_blank">Chat Principal</a></p>
+            <p>Crear mensaje: <a href="https://off-topic-backend.vercel.app/api/message" target="_blank">POST: Crear Mensaje</a></p>
+            <p>Ver mensajes: <a href="https://off-topic-backend.vercel.app/api/messages" target="_blank">GET: Ver Mensajes</a></p>
+        </div>
     </div>
 </body>
 </html>
