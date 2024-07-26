@@ -1,68 +1,54 @@
-# README
+# backend - Off Topic Chat
 
----
+## Descripción
 
-## **Off Topic Backend**
+La carpeta `backend` contiene toda la infraestructura del servidor de la aplicación, incluyendo la configuración del servidor, rutas de la API, middlewares y lógica de negocio. Este directorio es esencial para el manejo de todas las operaciones del lado del servidor.
 
-Este proyecto es el backend para la aplicación de chat "Off Topic". La aplicación permite a los usuarios interactuar en un chat público sin necesidad de registro, y está diseñada para manejar mensajes de forma segura y eficiente.
+## Estructura
 
-### **Tecnologías Utilizadas**
+### 1. **`src`**
 
-- **Node.js**: Entorno de ejecución para JavaScript en el lado del servidor.
-- **Express.js**: Framework web para Node.js que facilita la creación de aplicaciones web y APIs.
-- **Prisma**: ORM (Object-Relational Mapping) que simplifica las operaciones con bases de datos SQL.
-- **MySQL**: Sistema de gestión de bases de datos relacional utilizado para almacenar mensajes.
-- **Morgan**: Middleware para registro de solicitudes HTTP, útil para el monitoreo y depuración.
-- **Helmet**: Middleware para ayudar a asegurar las aplicaciones Express configurando varios encabezados HTTP.
-- **Sinon**: Librería para crear stubs, mocks y spies en pruebas.
-- **Mocha**: Framework de pruebas para Node.js.
-- **Chai**: Librería de aserciones para usar con Mocha.
+Contiene el código fuente principal de la aplicación backend. Dentro de esta carpeta se encuentran todas las funcionalidades, middlewares, configuraciones de la base de datos y rutas.
 
-### **Rutas de la API**
+- **Subcarpetas importantes**:
+  - `features`: Funcionalidades específicas de la aplicación, organizadas por módulos.
+  - `middleware`: Middlewares personalizados para tareas como validación y seguridad.
+  - `prisma`: Configuración de Prisma ORM para la interacción con la base de datos.
+  - `index.js`: Archivo de configuración de rutas de la API.
 
-#### **Rutas de Mensajes**
+### 2. **`public`**
 
-1. **Obtener Todos los Mensajes**
-   - **URL**: `/api/messages`
-   - **Método**: `GET`
-   - **Descripción**: Obtiene una lista de todos los mensajes ordenados por la fecha de creación en orden descendente.
-   - **Respuesta**:
-     - `200 OK`: Lista de mensajes con campos `content` y `createdAt`.
+Contiene archivos estáticos que pueden ser servidos al cliente, como el archivo `index.html` y otros recursos públicos.
 
-2. **Crear un Nuevo Mensaje**
-   - **URL**: `/api/messages`
-   - **Método**: `POST`
-   - **Descripción**: Crea un nuevo mensaje con el contenido proporcionado.
-   - **Cuerpo de la Solicitud**:
-     - `content`: Texto del mensaje.
-   - **Respuesta**:
-     - `201 Created`: El mensaje ha sido creado exitosamente con los detalles del mensaje creado.
-     - `400 Bad Request`: Si el contenido está vacío o no se proporciona.
+### 3. **`cluster.js`**
 
-### **Estructura del Proyecto**
+Archivo de configuración para ejecutar la aplicación en modo clúster, aprovechando múltiples núcleos de CPU para mejorar el rendimiento.
 
-- **`src/`**: Contiene el código fuente del proyecto.
-  - **`features/`**: Módulos de características específicas como `sendmessage` y `getmessages`.
-    - **`sendmessage/`**:
-      - **`sendmessage.routes.js`**: Define las rutas relacionadas con la creación de mensajes.
-      - **`sendmessage.controller.js`**: Controla la lógica para la creación de mensajes.
-      - **`sendmessage.service.js`**: Lógica de negocio y comunicación con la base de datos para la creación de mensajes.
-    - **`getmessages/`**:
-      - **`getmessages.routes.js`**: Define las rutas relacionadas con la obtención de mensajes.
-      - **`getmessages.controller.js`**: Controla la lógica para la obtención de mensajes.
-      - **`getmessages.service.js`**: Lógica de negocio y comunicación con la base de datos para la obtención de mensajes.
-  - **`middleware/`**: Contiene middlewares personalizados como el manejo de errores y la seguridad.
-  - **`prisma/`**: Configuración del cliente de Prisma.
-  - **`index.mjs`**: Punto de entrada principal de la aplicación.
+### 4. **`index.mjs`**
 
-### **Consideraciones de Seguridad**
+Archivo principal de entrada del servidor. Configura el servidor Express, aplica middlewares y establece las rutas de la API. También configura la gestión de errores y la seguridad básica.
 
-- **Validación de Entradas**: Se asegura de que todos los datos de entrada sean validados y sanitizados adecuadamente para prevenir inyecciones y otros tipos de ataques.
-- **Encabezados de Seguridad**: Uso de Helmet para configurar encabezados HTTP de seguridad.
-- **Autenticación y Autorización**: Implementación planificada para futuras mejoras.
+## Tecnologías Utilizadas
 
-### **Pruebas**
+- **Node.js**: Entorno de ejecución para JavaScript en el servidor.
+- **Express.js**: Framework web minimalista y flexible para Node.js, utilizado para crear el servidor y definir las rutas.
+- **Prisma ORM**: Utilizado para la gestión de la base de datos y las consultas. Prisma proporciona una abstracción de base de datos y facilita el acceso a los datos.
+- **MySQL**: Sistema de gestión de bases de datos utilizado para almacenar los datos de la aplicación.
+- **Morgan**: Middleware para registrar las solicitudes HTTP para el desarrollo y la depuración.
+- **Helmet**: Middleware de Express que ayuda a asegurar la aplicación estableciendo varios encabezados HTTP.
+- **compression**: Middleware para comprimir las respuestas HTTP, mejorando la velocidad de la aplicación.
+- **cors**: Middleware para habilitar CORS (Cross-Origin Resource Sharing), permitiendo que la API sea accesible desde diferentes dominios.
+- **dotenv**: Utilizado para cargar variables de entorno desde un archivo `.env` para configurar el entorno de desarrollo.
 
-- Las pruebas unitarias y de integración se han implementado utilizando Mocha y Chai. Estas pruebas aseguran que las funcionalidades críticas de la API funcionen correctamente y que las interacciones con la base de datos se realicen como se espera.
+## Uso
 
----
+La carpeta `backend` es el núcleo de la lógica del servidor y la gestión de datos de la aplicación. Todas las solicitudes de clientes pasan por este servidor, donde se procesan, se aplican las reglas de negocio y se gestionan las interacciones con la base de datos.
+
+## Buenas Prácticas
+
+- Mantener una estructura clara y organizada, separando las funcionalidades en módulos dentro de `src/features`.
+- Utilizar middlewares para tareas comunes como autenticación, validación de datos y limitación de tasa.
+- Documentar todas las rutas y funcionalidades clave para facilitar el mantenimiento y la escalabilidad.
+- Implementar pruebas unitarias y de integración para asegurar la calidad y fiabilidad del código.
+
+Este README proporciona una visión general de la estructura y el propósito de los archivos y carpetas dentro del directorio `backend`.
