@@ -8,10 +8,10 @@ const ThemeToggle = () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
       document.documentElement.classList.add('dark');
-      setIsDark(false);
+      setIsDark(true);
     } else {
       document.documentElement.classList.remove('dark');
-      setIsDark(true);
+      setIsDark(false);
     }
   }, []);
 
