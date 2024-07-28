@@ -1,4 +1,3 @@
-// src/features/chat/chatService.js
 import axios from 'axios';
 
 /**
@@ -13,9 +12,9 @@ export const getMessages = async () => {
 /**
  * Sends a new message to the server.
  * @param {string} content - The content of the message to send.
+ * @param {string} nickname - The nickname of the user sending the message.
  * @returns {Promise<Object>} A promise that resolves to the sent message object.
  */
-export const postMessage = async (content) => {
-  const response = await axios.post(`${process.env.REACT_APP_API_URL}/message`, { content });
-  return response.data;
+export const postMessage = async (content, nickname) => {
+  await axios.post(`${process.env.REACT_APP_API_URL}/message`, { content, nickname });
 };

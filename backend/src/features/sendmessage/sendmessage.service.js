@@ -11,7 +11,7 @@ import prisma from '../../prisma/prismaClient.js';
  * A promise that resolves to the created message object.
  */
 export const sendMessageService = async (content, nickname = 'Anon') => {
-    const newMessage = await prisma.message.create({
+    const newMessage = await prisma.messages.create({
         data: { content, nickname }
     });
     return newMessage;

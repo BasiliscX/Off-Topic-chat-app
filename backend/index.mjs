@@ -13,6 +13,8 @@ dotenv.config();
 
 const app = express();
 
+app.set('trust proxy', true); 
+
 const allowedOrigins = ['http://localhost:3000', process.env.BACKEND_URL];
 
 app.use(cors({
