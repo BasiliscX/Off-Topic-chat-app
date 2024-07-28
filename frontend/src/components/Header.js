@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+// src/components/Header.js
+import React, { useState, useEffect } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="bg-gray-800 text-white relative">
+    <header className={`header-fixed ${isScrolled ? 'bg-opacity-90' : ''}`}>
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
         <div className="text-lg font-bold">Off Topic Chat</div>
         <div className="flex items-center">
@@ -20,13 +35,15 @@ const Header = () => {
           </button>
         </div>
       </div>
-      <nav className={`absolute left-0 w-full bg-gray-800 bg-opacity-90 z-50 ${isOpen ? 'nav-visible' : 'nav-hidden'}`}>
-        <ul className="flex flex-col space-y-4 p-4">
-          <li><a href="#home">Inicio</a></li>
-          <li><a href="#about">Acerca de</a></li>
-          <li><a href="#contact">Contacto</a></li>
-        </ul>
-      </nav>
+      {isOpen && (
+        <nav className="header-menu">
+          <ul className="flex flex-col space-y-4 p-4">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#about">Acerca de</a></li>
+            <li><a href="#contact">Contacto</a></li>
+          </ul>
+        </nav>
+      )}
     </header>
   );
 };

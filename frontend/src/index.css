@@ -17,7 +17,7 @@
 body {
     background-color: var(--color-bg-light);
     color: var(--color-text-light);
-    transition: background-color var(--transition-duration), color var(--transition-duration); 
+    transition: background-color var(--transition-duration), color var(--transition-duration);
 }
 
 .dark body {
@@ -66,14 +66,14 @@ body {
 
 /* Estilos para inputs */
 input, .dark input {
-    background-color: var(--color-bg-light); 
-    color: var(--color-text-light); 
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
     transition: background-color var(--transition-duration), color var(--transition-duration);
 }
 
 .dark input {
-    background-color: var(--color-bg-dark); 
-    color: var(--color-text-dark); 
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
 }
 
 input::placeholder {
@@ -85,19 +85,32 @@ input::placeholder {
 }
 
 /* Estilos para el header */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50; /* Asegura que el header esté encima de otros contenidos */
+    transition: background-color var(--transition-duration), backdrop-filter var(--transition-duration);
+    background-color: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+/* Estado normal del header */
 .header {
-    position: relative; /* Asegura que el contenido del header sea relativo a su contenedor */
-    z-index: 10; /* Asegura que el header esté encima de otros contenidos */
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
 }
 
 /* Estilos para el menú de navegación desplegable */
 .header-menu {
-    position: absolute; /* Posiciona el menú relativamente al contenedor del header */
+    position: absolute;
     top: 100%; /* Asegura que el menú se despliegue justo debajo del header */
     left: 0;
     width: 100%;
     background-color: rgba(26, 32, 44, 0.9); /* Fondo semitransparente */
-    z-index: 9; /* Debajo del header */
+    z-index: 45; /* Debajo del header */
     transition: background-color var(--transition-duration);
 }
 
@@ -130,7 +143,7 @@ input::placeholder {
 .nav-hidden {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    transition: max-height var(--transition-duration) ease-out, opacity var(--transition-duration) ease-out;
     opacity: 0;
 }
 
@@ -138,5 +151,5 @@ input::placeholder {
 .nav-visible {
     max-height: 500px; /* Ajusta este valor según la altura máxima del contenido del menú */
     opacity: 1;
-    transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+    transition: max-height var(--transition-duration) ease-in, opacity var(--transition-duration) ease-in;
 }
