@@ -83,3 +83,60 @@ input::placeholder {
 .dark input::placeholder {
     color: var(--color-placeholder-dark);
 }
+
+/* Estilos para el header */
+.header {
+    position: relative; /* Asegura que el contenido del header sea relativo a su contenedor */
+    z-index: 10; /* Asegura que el header esté encima de otros contenidos */
+}
+
+/* Estilos para el menú de navegación desplegable */
+.header-menu {
+    position: absolute; /* Posiciona el menú relativamente al contenedor del header */
+    top: 100%; /* Asegura que el menú se despliegue justo debajo del header */
+    left: 0;
+    width: 100%;
+    background-color: rgba(26, 32, 44, 0.9); /* Fondo semitransparente */
+    z-index: 9; /* Debajo del header */
+    transition: background-color var(--transition-duration);
+}
+
+.dark .header-menu {
+    background-color: rgba(45, 55, 72, 0.9);
+}
+
+.header-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.header-menu li {
+    margin: 0.5rem 0;
+}
+
+.header-menu a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    transition: color var(--transition-duration);
+}
+
+.header-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Estado inicial del menú (cerrado) */
+.nav-hidden {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+}
+
+/* Estado final del menú (abierto) */
+.nav-visible {
+    max-height: 500px; /* Ajusta este valor según la altura máxima del contenido del menú */
+    opacity: 1;
+    transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+}
