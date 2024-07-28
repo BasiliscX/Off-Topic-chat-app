@@ -6,16 +6,24 @@ body {
     background-color: #f0f0f0;
     color: #333;
 }
-
+  
 .dark body {
     background-color: #1a202c;
     color: #f0f0f0;
 }
-
-.dark .bg-white {
-    background-color: #2d3748;
+  
+.dark .bg-gray-100 {
+    background-color: #1a202c;
 }
-
+  
+.dark .text-gray-800 {
+    color: #f0f0f0;
+}
+  
 .dark .text-black {
     color: #f0f0f0;
+}
+  
+.dark .bg-white {
+    background-color: #2d3748; 
 }
