@@ -12,8 +12,8 @@ import { sendMessageService } from './sendmessage.service.js';
  */
 export const sendMessage = async (req, res) => {
     try {
-        const { content } = req.body;
-        const newMessage = await sendMessageService(content);
+        const { content, nickname } = req.body;
+        const newMessage = await sendMessageService(content, nickname);
         res.status(201).json(newMessage);
     } catch (error) {
         console.error('Error creating message:', error);
