@@ -38,9 +38,9 @@ const Header = () => {
       {isOpen && (
         <nav className="header-menu">
           <ul className="flex flex-col space-y-4 p-4">
-            {/* <li><a href="#home">Inicio</a></li>
-            <li><a href="#about">Acerca de</a></li>
-            <li><a href="#contact">Contacto</a></li> */}
+            <li><a href="#home">proximamente 1</a></li>
+            <li><a href="#about">proximamente 2</a></li>
+            <li><a href="#contact">proximamente 3 ;)</a></li>
           </ul>
         </nav>
       )}

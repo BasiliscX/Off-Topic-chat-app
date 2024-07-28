@@ -2,6 +2,7 @@
 import React, { Suspense } from 'react';
 import Header from './components/Header';
 import ThemeToggle from './components/ThemeToggle';
+import Footer from './components/Footer';
 
 const Chat = React.lazy(() => import('./features/chat/Chat'));
 
@@ -15,6 +16,7 @@ function App() {
           <Chat />
         </Suspense>
       </div>
+      <Footer />
     </div>
   );
 }
