@@ -139,6 +139,36 @@ input::placeholder {
     text-decoration: underline;
 }
 
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50; /* Asegura que el header esté encima de otros contenidos */
+    transition: background-color var(--transition-duration), backdrop-filter var(--transition-duration);
+    background-color: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+    color: var(--color-text-dark);
+}
+
+.dark .header-fixed {
+    background-color: rgba(45, 55, 72, 0.8);
+    color: var(--color-text-dark);
+}
+
+/* Estilos para el texto en el header */
+.header-fixed .text-lg, 
+.header-fixed .text-sm, 
+.header-fixed .flex button {
+    color: var(--color-text-dark);
+}
+
+.dark .header-fixed .text-lg, 
+.dark .header-fixed .text-sm, 
+.dark .header-fixed .flex button {
+    color: var(--color-text-dark);
+}
+
 /* Estado inicial del menú (cerrado) */
 .nav-hidden {
     max-height: 0;
