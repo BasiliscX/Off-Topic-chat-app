@@ -1,3 +1,197 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Definición de variables */
+:root {
+    --transition-duration: 0.3s;
+    --color-bg-light: #f0f0f0;
+    --color-text-light: #333;
+    --color-bg-dark: #1a202c;
+    --color-text-dark: #f0f0f0;
+    --color-placeholder-light: #999;
+    --color-placeholder-dark: #ccc;
+}
+
+/* Estilos generales */
+body {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+.dark body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+}
+
+/* Estilos para fondos */
+.bg-gray-100 {
+    background-color: var(--color-bg-light);
+    transition: background-color var(--transition-duration);
+}
+
+.dark .bg-gray-100 {
+    background-color: var(--color-bg-dark);
+}
+
+/* Estilos para textos */
+.text-gray-800 {
+    color: var(--color-text-light);
+    transition: color var(--transition-duration);
+}
+
+.dark .text-gray-800 {
+    color: var(--color-text-dark);
+}
+
+.text-black {
+    color: var(--color-text-light);
+    transition: color var(--transition-duration);
+}
+
+.dark .text-black {
+    color: var(--color-text-dark);
+}
+
+/* Estilos para elementos con fondo blanco */
+.bg-white {
+    background-color: #ffffff;
+    transition: background-color var(--transition-duration);
+}
+
+.dark .bg-white {
+    background-color: #2d3748;
+}
+
+/* Estilos para inputs */
+input, .dark input {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+.dark input {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+}
+
+input::placeholder {
+    color: var(--color-placeholder-light);
+}
+
+.dark input::placeholder {
+    color: var(--color-placeholder-dark);
+}
+
+/* Estilos para el header */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50; /* Asegura que el header esté encima de otros contenidos */
+    transition: background-color var(--transition-duration), backdrop-filter var(--transition-duration);
+    background-color: rgba(31, 41, 55, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+/* Estado normal del header */
+.header {
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+/* Estilos para el menú de navegación desplegable */
+.header-menu {
+    position: absolute;
+    top: 100%; /* Asegura que el menú se despliegue justo debajo del header */
+    left: 0;
+    width: 100%;
+    background-color: rgba(26, 32, 44, 0.9); /* Fondo semitransparente */
+    z-index: 45; /* Debajo del header */
+    transition: background-color var(--transition-duration);
+}
+
+.dark .header-menu {
+    background-color: rgba(45, 55, 72, 0.9);
+}
+
+.header-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.header-menu li {
+    margin: 0.5rem 0;
+}
+
+.header-menu a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    transition: color var(--transition-duration);
+}
+
+.header-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Estado inicial del menú (cerrado) */
+.nav-hidden {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-duration) ease-out, opacity var(--transition-duration) ease-out;
+    opacity: 0;
+}
+
+/* Estado final del menú (abierto) */
+.nav-visible {
+    max-height: 500px; /* Ajusta este valor según la altura máxima del contenido del menú */
+    opacity: 1;
+    transition: max-height var(--transition-duration) ease-in, opacity var(--transition-duration) ease-in;
+}
+
+/* Estilos para el footer */
+footer {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+  }
+  
+  footer a {
+    color: var(--color-text-dark);
+    transition: color var(--transition-duration);
+  }
+  
+  footer a:hover {
+    color: var(--color-text-light);
+  }
+  
+  footer details summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  footer details summary:hover {
+    text-decoration: underline;
+  }
+  
+  footer details[open] p {
+    margin-top: 0.5rem;
+  }
+  
+  footer .fab,
+  footer .text-white i {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+  }
+  
+  footer .flex {
+    justify-content: center;
+    align-items: center;
+  }
+  

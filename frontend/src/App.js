@@ -1,17 +1,23 @@
 // src/App.js
 import React, { Suspense } from 'react';
-// import Header from './features/header/header.js';
+import Header from './components/Header';
+import ThemeToggle from './components/ThemeToggle';
+import Footer from './components/Footer';
 
 const Chat = React.lazy(() => import('./features/chat/Chat'));
 
 function App() {
   return (
-    <>
-      {/* <Header /> */}
-      <Suspense fallback={<div>Loading...</div>}>
-        <Chat />
-      </Suspense>
-    </>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <div className="flex-grow flex flex-col items-center justify-center">
+        <ThemeToggle />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Chat />
+        </Suspense>
+      </div>
+      <Footer />
+    </div>
   );
 }
 
