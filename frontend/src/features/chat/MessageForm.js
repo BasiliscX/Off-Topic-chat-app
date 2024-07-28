@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const MessageForm = ({ onSendMessage }) => {
   const [input, setInput] = useState('');
-  const [nickname, setNickname] = useState('Anon');
+  const [nickname, setNickname] = useState('');
+
+  useEffect(() => {
+    const savedNickname = localStorage.getItem('nickname') || 'Anon';
+    setNickname(savedNickname);
+  }, []);
+
+  const handleNicknameChange = (event) => {
+    const newNickname = event.target.value;
+    setNickname(newNickname);
+    localStorage.setItem('nickname', newNickname);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -17,7 +28,7 @@ const MessageForm = ({ onSendMessage }) => {
       <input
         type="text"
         value={nickname}
-        onChange={(e) => setNickname(e.target.value)}
+        onChange={handleNicknameChange}
         className="p-2 border border-gray-300 rounded-md focus:outline-none"
         placeholder="Tu nickname..."
       />
