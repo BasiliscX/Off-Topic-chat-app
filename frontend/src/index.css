@@ -153,3 +153,45 @@ input::placeholder {
     opacity: 1;
     transition: max-height var(--transition-duration) ease-in, opacity var(--transition-duration) ease-in;
 }
+
+/* Estilos para el footer */
+footer {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+  }
+  
+  footer a {
+    color: var(--color-text-dark);
+    transition: color var(--transition-duration);
+  }
+  
+  footer a:hover {
+    color: var(--color-text-light);
+  }
+  
+  footer details summary {
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  footer details summary:hover {
+    text-decoration: underline;
+  }
+  
+  footer details[open] p {
+    margin-top: 0.5rem;
+  }
+  
+  footer .fab,
+  footer .text-white i {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+  }
+  
+  footer .flex {
+    justify-content: center;
+    align-items: center;
+  }
+  
