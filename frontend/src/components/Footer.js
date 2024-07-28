@@ -37,7 +37,7 @@ const Footer = () => {
             <p className="text-left mt-2 text-gray-300">
               <strong>¿Cómo puedo colaborar con el proyecto?</strong>
               <br/>
-              Puedes colaborar visitando el <a href="https://github.com/BasiliscX/Off-Topic-chat-app" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline">repositorio en GitHub</a>, haciendo un fork y enviando tus contribuciones a través de pull requests, o simplemente dejando una estrella en el repositorio.
+              Puedes colaborar visitando el repositorio en GitHub, haciendo un fork y enviando tus contribuciones a través de pull requests, o simplemente dejando una estrella en el repositorio.
               <br/><br/>
               <strong>¿Qué variables de entorno son necesarias?</strong>
               <br/>
