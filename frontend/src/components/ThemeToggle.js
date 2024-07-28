@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 const ThemeToggle = () => {
   const [isDark, setIsDark] = useState(false);
@@ -25,9 +26,9 @@ const ThemeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 bg-blue-500 text-white rounded-md"
+      className="p-2 text-white rounded-md focus:outline-none"
     >
-      {isDark ? 'Modo Claro' : 'Modo Oscuro'}
+      {isDark ? <FiSun className="w-6 h-6" /> : <FiMoon className="w-6 h-6" />}
     </button>
   );
 };
