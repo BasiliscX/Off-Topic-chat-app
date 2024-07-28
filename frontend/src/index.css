@@ -2,49 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Definición de variables */
+:root {
+    --transition-duration: 0.3s;
+    --color-bg-light: #f0f0f0;
+    --color-text-light: #333;
+    --color-bg-dark: #1a202c;
+    --color-text-dark: #f0f0f0;
+    --color-placeholder-light: #999;
+    --color-placeholder-dark: #ccc;
+}
+
+/* Estilos generales */
 body {
-    background-color: #f0f0f0;
-    color: #333;
-    transition: background-color 0.3s, color 0.3s; /* Suave transición entre temas */
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    transition: background-color var(--transition-duration), color var(--transition-duration); 
 }
 
 .dark body {
-    background-color: #1a202c;
-    color: #f0f0f0;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
 }
 
+/* Estilos para fondos */
 .bg-gray-100 {
-    background-color: #f0f0f0;
-    transition: background-color 0.3s; /* Suave transición para elementos */
+    background-color: var(--color-bg-light);
+    transition: background-color var(--transition-duration);
 }
 
 .dark .bg-gray-100 {
-    background-color: #1a202c;
+    background-color: var(--color-bg-dark);
 }
 
+/* Estilos para textos */
 .text-gray-800 {
-    color: #333;
-    transition: color 0.3s; /* Suave transición para texto */
+    color: var(--color-text-light);
+    transition: color var(--transition-duration);
 }
 
 .dark .text-gray-800 {
-    color: #f0f0f0;
+    color: var(--color-text-dark);
 }
 
 .text-black {
-    color: #000;
-    transition: color 0.3s; /* Suave transición para texto */
+    color: var(--color-text-light);
+    transition: color var(--transition-duration);
 }
 
 .dark .text-black {
-    color: #f0f0f0;
+    color: var(--color-text-dark);
 }
 
+/* Estilos para elementos con fondo blanco */
 .bg-white {
     background-color: #ffffff;
-    transition: background-color 0.3s; /* Suave transición para elementos */
+    transition: background-color var(--transition-duration);
 }
 
 .dark .bg-white {
     background-color: #2d3748;
+}
+
+/* Estilos para inputs */
+input, .dark input {
+    background-color: var(--color-bg-light); 
+    color: var(--color-text-light); 
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+.dark input {
+    background-color: var(--color-bg-dark); 
+    color: var(--color-text-dark); 
+}
+
+input::placeholder {
+    color: var(--color-placeholder-light);
+}
+
+.dark input::placeholder {
+    color: var(--color-placeholder-dark);
 }
