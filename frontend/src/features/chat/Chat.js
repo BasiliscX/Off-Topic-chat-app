@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
 import { getMessages, postMessage } from './chatService';
@@ -14,28 +14,29 @@ const Chat = () => {
   const [serverError, setServerError] = useState(false);
   const [currentTag, setCurrentTag] = useState(0);
 
-  useEffect(() => {
-    async function fetchMessages() {
-      try {
-        const data = await getMessages(currentTag);
-        setMessages(data);
-        setServerError(false); // Reset error state on successful fetch
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-        setServerError(true);
-      }
+  const fetchMessages = useCallback(async () => {
+    try {
+      const data = await getMessages(currentTag);
+      setMessages(data);
+      setServerError(false); // Reset error state on successful fetch
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      setServerError(true);
     }
+  }, [currentTag]);
 
+  useEffect(() => {
     fetchMessages();
 
-    // Re-fetch messages at regular intervals (e.g., every 2 seconds)
-    const interval = setInterval(fetchMessages, 2000);
+    // Re-fetch messages at regular intervals (e.g., every 60 seconds)
+    const interval = setInterval(fetchMessages, 60000);
     return () => clearInterval(interval);
-  }, [currentTag]);
+  }, [fetchMessages]);
 
   const handleSendMessage = async (content, nickname, tag_id) => {
     try {
       await postMessage(content, nickname, tag_id);
+      fetchMessages(); // Refresh messages after posting
       setServerError(false); // Reset error state on successful post
     } catch (error) {
       console.error('Error posting message:', error);
@@ -51,7 +52,7 @@ const Chat = () => {
         {!serverError && (
           <>
             <MessageList messages={messages} />
-            <MessageForm onSendMessage={handleSendMessage} currentTag={currentTag} />
+            <MessageForm onSendMessage={handleSendMessage} currentTag={currentTag} refreshMessages={fetchMessages} />
             <TagSelector currentTag={currentTag} setCurrentTag={setCurrentTag} />
           </>
         )}
