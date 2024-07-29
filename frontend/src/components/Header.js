@@ -27,7 +27,8 @@ const Header = () => {
   return (
     <header className={`header-fixed ${isScrolled ? 'bg-opacity-90' : ''}`}>
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
-        <div className="text-lg font-bold">Off Topic Chat</div>
+        <div className="text-lg font-bold">Off Topic</div>
+        <div className="text-xs italic mt-1">Si queres conocer a alguien, dale libertad</div>
         <div className="flex items-center">
           <ThemeToggle />
           <button onClick={toggleMenu} className="ml-4">

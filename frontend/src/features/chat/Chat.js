@@ -1,4 +1,3 @@
-// src/features/chat/Chat.js
 import React, { useState, useEffect } from 'react';
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
@@ -35,10 +34,11 @@ const Chat = () => {
   /**
    * Handles sending a new message.
    * @param {string} content - The content of the message to send.
+   * @param {string} nickname - The nickname of the user sending the message.
    */
-  const handleSendMessage = async (content) => {
+  const handleSendMessage = async (content, nickname) => {
     try {
-      await postMessage(content);
+      await postMessage(content, nickname);
       setServerError(false); // Reset error state on successful post
     } catch (error) {
       console.error('Error posting message:', error);
@@ -49,7 +49,7 @@ const Chat = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold mb-6">Off Topic Chat</h1>
-      <div className="w-full max-w-md bg-white shadow-md rounded-lg p-4">
+      <div className="w-full max-w-sm bg-white shadow-md rounded-lg p-4">
         <ErrorDisplay error={serverError} />
         {!serverError && (
           <>

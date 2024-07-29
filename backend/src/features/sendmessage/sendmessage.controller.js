@@ -12,9 +12,12 @@ import { sendMessageService } from './sendmessage.service.js';
  */
 export const sendMessage = async (req, res) => {
     try {
-        const { content } = req.body;
-        const newMessage = await sendMessageService(content);
-        res.status(201).json(newMessage);
+        const { content, nickname } = req.body;
+        const newMessage = await sendMessageService(content, nickname);
+        res.status(201).json({
+            ...newMessage,
+            id: newMessage.id.toString() 
+        });
     } catch (error) {
         console.error('Error creating message:', error);
         res.status(500).send('Error creating message');

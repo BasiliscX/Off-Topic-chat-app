@@ -1,16 +1,22 @@
 import prisma from '../../prisma/prismaClient.js';
 
 /**
- * Retrieves a list of messages from the database, sorted by creation date in descending order.
- * Only the content and creation date of each message are returned.
+ * Service function for fetching messages from the database.
+ * This function retrieves messages from the 'messages' table.
  *
- * @returns {Promise<Array<{ content: string, createdAt: Date }>>} A promise that resolves to an array of objects,
- * each representing a message with its content and creation date.
+ * @function getMessagesService
+ * @returns {Promise<Array<{ id: number, content: string, createdAt: Date, nickname: string }>>}
+ * A promise that resolves to an array of messages.
  */
 export const getMessagesService = async () => {
-    const messages = await prisma.message.findMany({
-        orderBy: { createdAt: 'desc' },
-        select: { content: true, createdAt: true }
+    const messages = await prisma.messages.findMany({
+        orderBy: { created_at: 'desc' },
+        select: { id: true, content: true, created_at: true, nickname: true }
     });
-    return messages;
+    return messages.map(msg => ({
+        id: msg.id,
+        content: msg.content,
+        createdAt: msg.created_at,
+        nickname: msg.nickname
+    }));
 };

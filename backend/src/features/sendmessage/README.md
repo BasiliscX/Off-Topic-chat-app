@@ -28,6 +28,7 @@ Este archivo contiene el servicio que interactúa con la base de datos a través
 - **POST /api/message**: Endpoint para enviar un nuevo mensaje.
   - **Body**:
     - `content` (String): El contenido del mensaje a enviar. Este campo es obligatorio.
+    - `nickname` (String): El nombre o pseudonimo del usuario, si no se envia ninguno, es 'Anon' por defecto.
 
 ## Middleware
 
