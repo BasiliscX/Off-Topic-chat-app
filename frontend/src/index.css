@@ -21,6 +21,7 @@
 .dark {
     --color-button-bg: #374151; /* Fondo de botones en tema oscuro */
     --color-button-text: #f0f0f0; /* Texto de botones en tema oscuro */
+    --color-scrollbar-thumb: #4a4a4a;
 }
 
 /* Estilos generales */

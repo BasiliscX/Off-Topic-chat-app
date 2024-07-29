@@ -12,7 +12,7 @@ const TagSelector = ({ currentTag, setCurrentTag }) => {
     { id: 1, name: 'Universidad' },
     { id: 2, name: 'Cultura' },
     { id: 3, name: 'Ragnarök' },
-    { id: 4, name: 'Prueba de Deslizador' }
+    // { id: 4, name: 'Prueba de Deslizador' }
   ];
 
   return (

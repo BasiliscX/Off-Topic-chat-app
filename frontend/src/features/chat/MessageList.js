@@ -1,8 +1,12 @@
 import React from 'react';
 
+/**
+ * Component for displaying a list of messages.
+ * @param {Array} messages - Array of message objects to display.
+ */
 const MessageList = ({ messages }) => {
   return (
-    <div className="h-64 overflow-y-scroll mb-4">
+    <div className="h-64 overflow-y-scroll mb-4 scrollbar-hide">
       {messages.map((msg, index) => (
         <div key={index} className="p-2 border-b border-gray-200">
           <strong>{msg.nickname}:</strong> {msg.content}
