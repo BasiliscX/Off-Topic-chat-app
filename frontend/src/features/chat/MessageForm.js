@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-const MessageForm = ({ onSendMessage }) => {
+const MessageForm = ({ onSendMessage, currentTag }) => {
   const [input, setInput] = useState('');
-  const [nickname, setNickname] = useState('');
-
-  useEffect(() => {
-    const savedNickname = localStorage.getItem('nickname') || 'Anon';
-    setNickname(savedNickname);
-  }, []);
-
-  const handleNicknameChange = (event) => {
-    const newNickname = event.target.value;
-    setNickname(newNickname);
-    localStorage.setItem('nickname', newNickname);
-  };
+  const [nickname, setNickname] = useState(localStorage.getItem('nickname') || 'Anon');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (input.trim()) {
-      onSendMessage(input, nickname);
+      onSendMessage(input, nickname, currentTag);
       setInput('');
     }
   };
@@ -28,7 +17,10 @@ const MessageForm = ({ onSendMessage }) => {
       <input
         type="text"
         value={nickname}
-        onChange={handleNicknameChange}
+        onChange={(e) => {
+          setNickname(e.target.value);
+          localStorage.setItem('nickname', e.target.value);
+        }}
         className="p-2 border border-gray-300 rounded-md focus:outline-none"
         placeholder="Tu nickname..."
       />

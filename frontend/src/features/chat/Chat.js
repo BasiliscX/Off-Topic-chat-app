@@ -11,11 +11,12 @@ import ErrorDisplay from '../errorHandling/ErrorDisplay';
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [serverError, setServerError] = useState(false);
+  const [currentTag, setCurrentTag] = useState(0);
 
   useEffect(() => {
     async function fetchMessages() {
       try {
-        const data = await getMessages();
+        const data = await getMessages(currentTag);
         setMessages(data);
         setServerError(false); // Reset error state on successful fetch
       } catch (error) {
@@ -29,16 +30,11 @@ const Chat = () => {
     // Re-fetch messages at regular intervals (e.g., every 2 seconds)
     const interval = setInterval(fetchMessages, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentTag]);
 
-  /**
-   * Handles sending a new message.
-   * @param {string} content - The content of the message to send.
-   * @param {string} nickname - The nickname of the user sending the message.
-   */
-  const handleSendMessage = async (content, nickname) => {
+  const handleSendMessage = async (content, nickname, tag_id) => {
     try {
-      await postMessage(content, nickname);
+      await postMessage(content, nickname, tag_id);
       setServerError(false); // Reset error state on successful post
     } catch (error) {
       console.error('Error posting message:', error);
@@ -51,10 +47,16 @@ const Chat = () => {
       <h1 className="text-4xl font-bold mb-6">Off Topic Chat</h1>
       <div className="w-full max-w-sm bg-white shadow-md rounded-lg p-4">
         <ErrorDisplay error={serverError} />
+        <div className="mb-4">
+          <button onClick={() => setCurrentTag(0)} className="mr-2">Global</button>
+          <button onClick={() => setCurrentTag(1)} className="mr-2">| Universidad</button>
+          <button onClick={() => setCurrentTag(2)} className="mr-2">| Cultura</button>
+          <button onClick={() => setCurrentTag(3)} className="mr-2">| Ragnarök</button>
+        </div>
         {!serverError && (
           <>
             <MessageList messages={messages} />
-            <MessageForm onSendMessage={handleSendMessage} />
+            <MessageForm onSendMessage={handleSendMessage} currentTag={currentTag} />
           </>
         )}
       </div>
