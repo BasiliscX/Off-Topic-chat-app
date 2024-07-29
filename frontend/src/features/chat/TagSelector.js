@@ -11,11 +11,12 @@ const TagSelector = ({ currentTag, setCurrentTag }) => {
     { id: 0, name: 'Global' },
     { id: 1, name: 'Universidad' },
     { id: 2, name: 'Cultura' },
-    { id: 3, name: 'Ragnarök' }
+    { id: 3, name: 'Ragnarök' },
+    { id: 4, name: 'Prueba de Deslizador' }
   ];
 
   return (
-    <div className="flex overflow-x-auto mb-4">
+    <div className="flex overflow-x-auto mb-4 scrollbar-hide">
       {tags.map(tag => (
         <button
           key={tag.id}
