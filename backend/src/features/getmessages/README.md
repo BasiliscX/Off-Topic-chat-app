@@ -26,7 +26,7 @@ Este archivo contiene el servicio que interactúa con la base de datos a través
 
 - **GET /api/messages**: Endpoint para obtener una lista de mensajes.
   - **Respuesta**:
-    - Una lista de objetos, cada uno representando un mensaje con los campos `content` y `createdAt`.
+    - Una lista de objetos, cada uno representando un mensaje con los campos `content`, `createdAt` y `nickname`.
 
 ## Middleware
 
