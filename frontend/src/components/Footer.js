@@ -47,7 +47,7 @@ const Footer = () => {
               <br/>
               Puedes utilizar la mensajería de GitHub para cualquier sugerencia o consulta.
               <br/><br/>
-              <a className="text-white underline" href="https://github.com/BasiliscX" target="_blank" rel="noopener noreferrer">Repositorio del proyecto en GitHub</a>
+              <a className="text-white underline" href="https://github.com/BasiliscX/Off-Topic-chat-app" target="_blank" rel="noopener noreferrer">Repositorio del proyecto en GitHub</a>
             </p>
           </details>
           <span className="px-3 hidden md:block">|</span>
