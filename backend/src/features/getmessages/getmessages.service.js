@@ -12,7 +12,7 @@ import prisma from '../../prisma/prismaClient.js';
 export const getMessagesService = async (tag_id = 0) => {
     const messages = await prisma.messages.findMany({
         where: { tag_id },
-        orderBy: { created_at: 'desc' },
+        orderBy: { created_at: 'asc' },
         select: { content: true, created_at: true, nickname: true, tag_id: true }
     });
     return messages;
