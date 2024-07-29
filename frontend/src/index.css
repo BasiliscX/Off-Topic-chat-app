@@ -11,6 +11,15 @@
     --color-text-dark: #f0f0f0;
     --color-placeholder-light: #999;
     --color-placeholder-dark: #ccc;
+    --color-button-bg: #e2e8f0;
+    --color-button-text: #333;
+    --color-button-bg-active: #4299e1;
+    --color-button-text-active: #ffffff;
+}
+
+.dark {
+    --color-button-bg: #374151; /* Fondo de botones en tema oscuro */
+    --color-button-text: #f0f0f0; /* Texto de botones en tema oscuro */
 }
 
 /* Estilos generales */
@@ -232,4 +241,33 @@ footer .text-white i {
 footer .flex {
     justify-content: center;
     align-items: center;
+}
+
+/* Estilos para el TagSelector */
+.tag-button {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+.tag-button:not(.active) {
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+}
+
+.tag-button.active {
+    background-color: var(--color-button-bg-active);
+    color: var(--color-button-text-active);
+}
+
+.flex {
+    display: flex;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
 }

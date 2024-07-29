@@ -3,6 +3,7 @@ import MessageList from './MessageList';
 import MessageForm from './MessageForm';
 import { getMessages, postMessage } from './chatService';
 import ErrorDisplay from '../errorHandling/ErrorDisplay';
+import TagSelector from './TagSelector';
 
 /**
  * Component representing the main chat interface.
@@ -47,12 +48,7 @@ const Chat = () => {
       <h1 className="text-4xl font-bold mb-6">Off Topic Chat</h1>
       <div className="w-full max-w-sm bg-white shadow-md rounded-lg p-4">
         <ErrorDisplay error={serverError} />
-        <div className="mb-4">
-          <button onClick={() => setCurrentTag(0)} className="mr-2">Global</button>
-          <button onClick={() => setCurrentTag(1)} className="mr-2">| Universidad</button>
-          <button onClick={() => setCurrentTag(2)} className="mr-2">| Cultura</button>
-          <button onClick={() => setCurrentTag(3)} className="mr-2">| Ragnarök</button>
-        </div>
+        <TagSelector currentTag={currentTag} setCurrentTag={setCurrentTag} />
         {!serverError && (
           <>
             <MessageList messages={messages} />
