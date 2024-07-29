@@ -16,7 +16,7 @@ const TagSelector = ({ currentTag, setCurrentTag }) => {
   ];
 
   return (
-    <div className="flex overflow-x-auto mb-4 scrollbar-hide">
+    <div className="flex overflow-x-auto mt-4 scrollbar-hide">
       {tags.map(tag => (
         <button
           key={tag.id}

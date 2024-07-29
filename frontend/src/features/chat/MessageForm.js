@@ -31,9 +31,6 @@ const MessageForm = ({ onSendMessage, currentTag }) => {
         className="p-2 border border-gray-300 rounded-md focus:outline-none"
         placeholder="Escribe tu mensaje..."
       />
-      <button type="submit" className="p-2 bg-blue-500 text-white rounded-md">
-        Enviar
-      </button>
     </form>
   );
 };

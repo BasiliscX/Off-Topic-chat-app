@@ -48,11 +48,11 @@ const Chat = () => {
       <h1 className="text-4xl font-bold mb-6">Off Topic Chat</h1>
       <div className="w-full max-w-sm bg-white shadow-md rounded-lg p-4">
         <ErrorDisplay error={serverError} />
-        <TagSelector currentTag={currentTag} setCurrentTag={setCurrentTag} />
         {!serverError && (
           <>
             <MessageList messages={messages} />
             <MessageForm onSendMessage={handleSendMessage} currentTag={currentTag} />
+            <TagSelector currentTag={currentTag} setCurrentTag={setCurrentTag} />
           </>
         )}
       </div>
