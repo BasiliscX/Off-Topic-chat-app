@@ -11,6 +11,17 @@
     --color-text-dark: #f0f0f0;
     --color-placeholder-light: #999;
     --color-placeholder-dark: #ccc;
+    --color-button-bg: #e2e8f0;
+    --color-button-text: #333;
+    --color-button-bg-active: #4299e1;
+    --color-button-text-active: #ffffff;
+    --color-scrollbar-thumb: #c0c0c0;
+}
+
+.dark {
+    --color-button-bg: #374151; /* Fondo de botones en tema oscuro */
+    --color-button-text: #f0f0f0; /* Texto de botones en tema oscuro */
+    --color-scrollbar-thumb: #4a4a4a;
 }
 
 /* Estilos generales */
@@ -233,3 +244,69 @@ footer .flex {
     justify-content: center;
     align-items: center;
 }
+
+/* Estilos para el TagSelector */
+.tag-button {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    border-radius: 0.25rem; /* Bordes redondeados */
+    transition: background-color var(--transition-duration), color var(--transition-duration);
+    white-space: nowrap; /* Evita el corte de texto en botones largos */
+}
+
+.tag-button:not(.active) {
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+}
+
+.tag-button.active {
+    background-color: var(--color-button-bg-active);
+    color: var(--color-button-text-active);
+}
+
+/* Estilizar el scrollbar para navegadores WebKit */
+.scrollbar-hide::-webkit-scrollbar {
+    width: 6px; /* Ancho del scrollbar */
+}
+
+.scrollbar-hide::-webkit-scrollbar-track {
+    background: transparent; /* Fondo del track */
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+    background-color: var(--color-scrollbar-thumb); /* Color del pulgar */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 2px solid transparent; /* Espaciado entre el track y el pulgar */
+    background-clip: content-box;
+}
+
+/* Estilizar el scrollbar para Firefox */
+.scrollbar-hide {
+    scrollbar-width: thin; /* Ancho del scrollbar */
+    scrollbar-color: var(--color-scrollbar-thumb) transparent; /* Color del pulgar y del track */
+}
+
+
+
+.tag-button:not(.active) {
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
+}
+
+.tag-button.active {
+    background-color: var(--color-button-bg-active);
+    color: var(--color-button-text-active);
+}
+
+.flex {
+    display: flex;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
