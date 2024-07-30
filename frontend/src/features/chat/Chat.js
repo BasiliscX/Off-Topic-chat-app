@@ -1,3 +1,4 @@
+// src/features/chat/Chat.js
 import React, { useState, useEffect, useCallback } from 'react';
 import MessageList from './MessageList';
 import { getMessages, postMessage } from './chatService';
@@ -10,6 +11,7 @@ const Chat = () => {
   const [currentTag, setCurrentTag] = useState(0);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
 
+  // Memoize fetchMessages to avoid re-creating the function on every render
   const fetchMessages = useCallback(async () => {
     try {
       const data = await getMessages(currentTag);
@@ -24,7 +26,7 @@ const Chat = () => {
   useEffect(() => {
     fetchMessages();
 
-    const interval = setInterval(fetchMessages, 60000);
+    const interval = setInterval(fetchMessages, 60000); // Re-fetch messages every 60 seconds
     return () => clearInterval(interval);
   }, [fetchMessages]);
 
