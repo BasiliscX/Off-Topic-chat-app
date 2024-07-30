@@ -48,7 +48,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center md:justify-start">
+    <div className="bg-gray-100 flex flex-col items-center justify-center md:justify-start">
       <h1 className="text-4xl font-bold mb-6 md:mb-8">Off Topic Chat</h1>
       <div className={`flex flex-col ${isDesktop ? 'md:flex-row' : ''} w-full max-w-6xl`}>
         {isDesktop ? (
