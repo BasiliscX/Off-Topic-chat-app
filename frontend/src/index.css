@@ -310,3 +310,30 @@ footer .flex {
     margin-bottom: 1rem;
 }
 
+/* Estilos para el componente ControlPanel */
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  order: 2; /* Se posiciona debajo del MessageList en mobile */
+}
+
+/* Estilos para el componente MessageList */
+.message-list-container {
+  order: 1;
+  width: 100%;
+}
+
+/* Ajustes para escritorio */
+@media (min-width: 768px) {
+  .control-panel {
+    width: 30%;
+    margin-right: 2rem; /* Espaciado entre el panel de control y el listado de mensajes */
+    order: 1; /* Cambia el orden para que el ControlPanel esté a la izquierda */
+  }
+
+  .message-list-container {
+    width: 70%;
+    order: 2; /* Cambia el orden para que el MessageList esté a la derecha */
+  }
+}

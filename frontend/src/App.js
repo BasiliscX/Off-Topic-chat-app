@@ -3,6 +3,7 @@ import React, { Suspense } from 'react';
 import Header from './components/Header';
 import ThemeToggle from './components/ThemeToggle';
 import Footer from './components/Footer';
+import Loader from './components/Loader';
 
 const Chat = React.lazy(() => import('./features/chat/Chat'));
 
@@ -12,7 +13,7 @@ function App() {
       <Header />
       <div className="flex-grow flex flex-col items-center justify-center">
         <ThemeToggle />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Chat />
         </Suspense>
       </div>
