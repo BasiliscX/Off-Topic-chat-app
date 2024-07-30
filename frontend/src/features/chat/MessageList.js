@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 /**
  * Component for displaying a list of messages.
  * @param {Array} messages - Array of message objects to display.
  */
 const MessageList = ({ messages }) => {
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    // Desplazar el contenedor de mensajes al fondo
+    messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+  }, [messages]);
+
   return (
-    <div className="h-64 overflow-y-scroll mb-4">
+    <div ref={messagesEndRef} className="h-64 overflow-y-scroll mb-4 scrollbar-hide">
       {messages.map((msg, index) => (
         <div key={index} className="p-2 border-b border-gray-200">
-          <strong>{msg.nickname || 'Anon'}:</strong> {msg.content}
+          <strong>{msg.nickname}:</strong> {msg.content}
           <div className="text-xs text-gray-500">
-            {new Date(msg.createdAt).toLocaleString()}
+            {msg.created_at ? new Date(msg.created_at).toLocaleString() : 'No date available'}
           </div>
         </div>
       ))}

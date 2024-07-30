@@ -11,7 +11,15 @@ const ErrorDisplay = ({ error }) => {
 
   return (
     <div className="text-red-500 p-4">
-      Y si... los NPC´s lo hicieron de nuevo ¡SERVER HAS FALLEN! aguarda un momento que Guille está atendiendolo ;)
+      <h1>¡SERVER HAS FALLEN!</h1>
+      <p>El servicio está caído :,(</p>
+      <p>Dos posibles motivos:</p>
+      <ul className="list-disc pl-6">
+        <li>Por el momento, el sitio maneja una cantidad muy limitada de conexiones (debido al plan del hosting). El desarrollador está trabajando en alternativas mejores.</li>
+        <li>El desarrollador está deployando funcionalidades del backend.</li>
+      </ul>
+      <p>En cualquier caso, el servicio se restaurará pronto.</p>
+      <p>¡Gracias por elegir Off Topic!</p>
     </div>
   );
 };

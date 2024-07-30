@@ -1,45 +1,46 @@
-import React, { useState, useEffect } from 'react';
+// src/features/chat/Chat.js
+import React, { useState, useEffect, useCallback } from 'react';
 import MessageList from './MessageList';
-import MessageForm from './MessageForm';
 import { getMessages, postMessage } from './chatService';
 import ErrorDisplay from '../errorHandling/ErrorDisplay';
+import ControlPanel from './ControlPanel';
 
-/**
- * Component representing the main chat interface.
- * It fetches and displays messages, handles sending new messages, and manages server error state.
- */
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [serverError, setServerError] = useState(false);
+  const [currentTag, setCurrentTag] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+  // Memoize fetchMessages to avoid re-creating the function on every render
+  const fetchMessages = useCallback(async () => {
+    try {
+      const data = await getMessages(currentTag);
+      setMessages(data);
+      setServerError(false);
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      setServerError(true);
+    }
+  }, [currentTag]);
 
   useEffect(() => {
-    async function fetchMessages() {
-      try {
-        const data = await getMessages();
-        setMessages(data);
-        setServerError(false); // Reset error state on successful fetch
-      } catch (error) {
-        console.error('Error fetching messages:', error);
-        setServerError(true);
-      }
-    }
-
     fetchMessages();
 
-    // Re-fetch messages at regular intervals (e.g., every 2 seconds)
-    const interval = setInterval(fetchMessages, 2000);
+    const interval = setInterval(fetchMessages, 60000); // Re-fetch messages every 60 seconds
     return () => clearInterval(interval);
+  }, [fetchMessages]);
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  /**
-   * Handles sending a new message.
-   * @param {string} content - The content of the message to send.
-   * @param {string} nickname - The nickname of the user sending the message.
-   */
-  const handleSendMessage = async (content, nickname) => {
+  const handleSendMessage = async (content, nickname, tag_id) => {
     try {
-      await postMessage(content, nickname);
-      setServerError(false); // Reset error state on successful post
+      await postMessage(content, nickname, tag_id);
+      fetchMessages(); // Refresh messages after sending a new one
+      setServerError(false);
     } catch (error) {
       console.error('Error posting message:', error);
       setServerError(true);
@@ -47,14 +48,34 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center">
-      <h1 className="text-4xl font-bold mb-6">Off Topic Chat</h1>
-      <div className="w-full max-w-sm bg-white shadow-md rounded-lg p-4">
-        <ErrorDisplay error={serverError} />
-        {!serverError && (
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center md:justify-start">
+      <h1 className="text-4xl font-bold mb-6 md:mb-8">Off Topic Chat</h1>
+      <div className={`flex flex-col ${isDesktop ? 'md:flex-row' : ''} w-full max-w-6xl`}>
+        {isDesktop ? (
           <>
-            <MessageList messages={messages} />
-            <MessageForm onSendMessage={handleSendMessage} />
+            <ControlPanel
+              onSendMessage={handleSendMessage}
+              currentTag={currentTag}
+              setCurrentTag={setCurrentTag}
+              refreshMessages={fetchMessages}
+            />
+            <div className="flex-grow bg-white shadow-md rounded-lg p-4 ml-4 mr-4">
+              <ErrorDisplay error={serverError} />
+              {!serverError && <MessageList messages={messages} />}
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex-grow bg-white shadow-md rounded-lg p-4 ml-4 mr-4">
+              <ErrorDisplay error={serverError} />
+              {!serverError && <MessageList messages={messages} />}
+            </div>
+            <ControlPanel
+              onSendMessage={handleSendMessage}
+              currentTag={currentTag}
+              setCurrentTag={setCurrentTag}
+              refreshMessages={fetchMessages}
+            />
           </>
         )}
       </div>
