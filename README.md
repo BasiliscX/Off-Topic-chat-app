@@ -2,7 +2,7 @@
 
 ## Descripción General
 
-**Off-Topic-chat-app** es una aplicación de chat en tiempo real, diseñada para permitir la interacción entre usuarios a través de mensajes de texto. La aplicación está dividida en dos partes principales: el frontend y el backend. El frontend está desarrollado con React, mientras que el backend utiliza Node.js con Express y Prisma para la gestión de la base de datos.
+**[Off-Topic-chat-app](https://off-topic-omega.vercel.app/)** es una aplicación de chat en tiempo real, diseñada para permitir la interacción entre usuarios a través de mensajes de texto. La aplicación está dividida en dos partes principales: el frontend y el backend. El frontend está desarrollado con React, mientras que el backend utiliza Node.js con Express y Prisma para la gestión de la base de datos.
 
 ## Estructura del Proyecto
 
