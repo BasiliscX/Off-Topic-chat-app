@@ -1,3 +1,4 @@
+// index.mjs
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -12,29 +13,25 @@ dotenv.config();
 
 const app = express();
 
-app.set("trust proxy", 1); // Trust first proxy for production setups
+app.set("trust proxy", 1);
 
-// Allowed origins
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://offtopic-alpha.vercel.app/",
-  process.env.FRONTEND_URL,
+  "https://off-topic-omega.vercel.app",
+  "https://offtopic-alpha.vercel.app",
 ];
 
-// Configurar CORS
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Permitir solicitudes sin origen (Postman, servidores internos) o si el origen está en la lista permitida
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        console.error(`Origen no permitido por CORS: ${origin}`);
         callback(new Error("Not allowed by CORS"));
       }
     },
     methods: ["GET", "POST"],
-    credentials: true, // Permitir el envío de cookies si es necesario
+    credentials: true,
     optionsSuccessStatus: 200,
   })
 );
@@ -59,10 +56,8 @@ app.use((req, res, next) => {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Configuración de las rutas
 app.use("/api", routes);
 
-// Servir archivo estático
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
