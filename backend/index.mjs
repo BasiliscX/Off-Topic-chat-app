@@ -15,7 +15,11 @@ const app = express();
 app.set("trust proxy", 1); // Trust first proxy for production setups
 
 // Allowed origins
-const allowedOrigins = ["http://localhost:3000", process.env.FRONTEND_URL]; // Cambié BACKEND_URL a FRONTEND_URL
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://offtopic-alpha.vercel.app/",
+  process.env.FRONTEND_URL,
+];
 
 // Configurar CORS
 app.use(
